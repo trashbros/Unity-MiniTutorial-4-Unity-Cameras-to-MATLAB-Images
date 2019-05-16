@@ -81,8 +81,13 @@ namespace UnityTutorial
         {
             //Clear old data
             Array.Clear(fullBytes, 0, fullBytes.Length);
+
             //Convert int to bytes
             byte[] bytesToSendCount = BitConverter.GetBytes(byteLength);
+
+            // Convert the byte array to Big Endian
+            Array.Reverse(bytesToSendCount);
+
             //Copy result to fullBytes
             bytesToSendCount.CopyTo(fullBytes, 0);
         }
